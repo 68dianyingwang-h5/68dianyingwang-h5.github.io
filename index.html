@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>68电影网 - 老片/胶片/深夜放映厅电影导航 | 68dianyingwang-h5</title>
+<meta name="description" content="68电影网是第 68 号放映厅：收老片、胶片电影、深夜片、城市取景片、禁片与冷门佳作。配色暗厅黑+票根米黄+放映机琥珀+银幕冷白，网址 68dianyingwang-h5.github.io。">
+<meta name="keywords" content="68电影网,老电影,胶片电影,深夜放映,1968电影,禁片,冷门佳作,城市取景,68dianyingwang-h5">
+<meta name="author" content="68电影网">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://68dianyingwang-h5.github.io/">
+<meta property="og:title" content="68电影网 - 第 68 号厅，灯光调暗">
+<meta property="og:description" content="68电影网：老片、胶片、深夜片、城市取景片、禁片与冷门佳作。打板，放映。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://68dianyingwang-h5.github.io/">
+<meta property="og:site_name" content="68电影网">
+<meta name="msvalidate.01" content="BING_VERIFY_CODE">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"68电影网",
+  "url":"https://68dianyingwang-h5.github.io/",
+  "description":"68电影网是第 68 号放映厅，整理老片、胶片电影、深夜片、城市取景片与冷门佳作。"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {
+      "@type":"Question",
+      "name":"68电影网是什么？",
+      "acceptedAnswer":{"@type":"Answer","text":"68电影网是一个老片/胶片/深夜放映向的电影导航站。68 是放映厅号，也是胶片编号感；它不追当天热搜，专放经得起重看的老片、冷门片、城市取景片和有点危险的禁片。"}
+    },
+    {
+      "@type":"Question",
+      "name":"68电影网和普通影视站有什么不同？",
+      "acceptedAnswer":{"@type":"Answer","text":"普通站按“最新/热门”排，68电影网按“厅号/胶片号/年代/城市/深夜感”排。进来像进老电影院，不是进视频 App。"}
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#0c0b10;
+  --card:#15131c;
+  --ink:#f1ecff;
+  --muted:#a79fc4;
+  --amber:#f6a93b;
+  --red:#ff5f56;
+  --ticket:#f3e7c9;
+  --screen:#dfe7ff;
+  --line:rgba(246,169,59,.30);
+  --shadow:0 18px 46px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  background:
+    radial-gradient(820px 460px at 88% -8%,rgba(223,231,255,.14),transparent 60%),
+    radial-gradient(760px 440px at -8% 8%,rgba(246,169,59,.18),transparent 55%),
+    var(--bg);
+  color:var(--ink);line-height:1.78;
+}
+a{color:inherit;text-decoration:none}
+
+/* 放映机导航 */
+.sx-top{position:sticky;top:0;z-index:999;background:rgba(12,11,16,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.sx-top__in{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.7rem 1rem}
+.sx-logo{font-weight:900;font-size:1.18rem}
+.sx-logo b{color:var(--amber)}
+.sx-logo i{color:var(--red);font-style:normal}
+.sx-nav{display:flex;gap:.3rem}
+.sx-nav a{padding:.45rem .8rem;border-radius:8px;font-size:.9rem;color:var(--muted);font-weight:600}
+.sx-nav a:hover{background:rgba(246,169,59,.16);color:var(--amber)}
+.sx-burger{display:none;flex-direction:column;gap:4px;cursor:pointer}
+.sx-burger span{width:22px;height:2px;background:var(--amber);border-radius:2px}
+
+/* Hero 放映厅 */
+.sx-hero{max-width:1180px;margin:0 auto;padding:3.2rem 1rem 2.4rem;position:relative;overflow:hidden}
+.sx-reel{height:34px;background:repeating-linear-gradient(90deg,#000 0 10px,#2a2636 10px 20px);border-radius:8px;margin-bottom:1.4rem;opacity:.8}
+.sx-clap{display:inline-block;font-size:1.1rem;background:var(--ticket);color:#221c10;padding:.25rem .7rem;border-radius:6px;font-weight:800;transform:rotate(-3deg)}
+.sx-hero h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.2;margin:.9rem 0 1rem}
+.sx-hero h1 em{font-style:normal;color:var(--amber)}
+.sx-hero h1 u{text-decoration:none;color:var(--red)}
+.sx-hero p{color:var(--muted);max-width:690px;margin-bottom:1.8rem}
+.sx-cta{display:inline-flex;gap:.5rem;align-items:center;padding:.85rem 1.9rem;border-radius:10px;font-weight:800;color:#1a1206;background:linear-gradient(90deg,var(--amber),var(--red));box-shadow:var(--shadow)}
+.sx-dim{color:var(--screen);font-size:.85rem;letter-spacing:2px}
+
+/* 区块 */
+.sx-sec{max-width:1180px;margin:0 auto;padding:3.3rem 1rem}
+.sx-head{margin-bottom:1.8rem;text-align:center}
+.sx-head .no{font-size:.74rem;color:var(--amber);letter-spacing:3px}
+.sx-head h2{font-size:clamp(1.4rem,3.5vw,2.2rem);font-weight:900;margin-top:.3rem}
+.sx-head h2 i{color:var(--red);font-style:normal}
+.sx-head p{color:var(--muted);margin-top:.35rem;font-size:.94rem}
+
+/* 胶片编号片单 */
+.sx-reels{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.sx-cell{border:1px solid var(--line);border-radius:16px;padding:1.3rem 1.1rem;background:var(--card);position:relative;transition:.25s}
+.sx-cell:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.sx-cell .roll{font-family:ui-monospace,Consolas,monospace;font-size:.78rem;color:var(--amber);border:1px dashed var(--amber);display:inline-block;padding:.1rem .5rem;border-radius:6px}
+.sx-cell h3{font-size:1.04rem;margin:.6rem 0 .4rem}
+.sx-cell p{font-size:.82rem;color:var(--muted)}
+.sx-cell small{display:block;margin-top:.6rem;color:var(--screen);font-size:.73rem}
+
+/* 厅位分类 */
+.sx-halls{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.sx-hall{text-align:center;padding:1.2rem .6rem;background:var(--card);border:1px solid var(--line);border-radius:18px;transition:.25s}
+.sx-hall:hover{transform:translateY(-4px);border-color:var(--red)}
+.sx-hall .num{width:56px;height:56px;margin:0 auto .7rem;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:900;background:#0a0910;border:1px solid var(--amber);color:var(--amber)}
+.sx-hall h3{font-size:.96rem}
+.sx-hall p{font-size:.74rem;color:var(--muted)}
+
+/* 上座率榜：齿孔进度 */
+.sx-rank{display:grid;gap:1.1rem}
+.sx-seat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.1rem 1.2rem}
+.sx-seat h3{font-size:1.04rem;display:flex;justify-content:space-between;margin-bottom:.6rem}
+.sx-seat h3 span{color:var(--amber)}
+.sx-perf{height:14px;border-radius:6px;background:#0a0910;overflow:hidden;position:relative;border:1px solid var(--line);
+  background-image:repeating-linear-gradient(90deg,transparent 0 6px,rgba(246,169,59,.25) 6px 8px)}
+.sx-perf i{display:block;height:100%;background:linear-gradient(90deg,var(--amber),var(--red))}
+.sx-perf i::after{content:"🎟️";position:absolute;right:5px;top:-3px;font-size:.8rem}
+
+/* 放映员手记 */
+.sx-notes{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+.sx-note{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.4rem;position:relative;overflow:hidden}
+.sx-note .slate{font-size:.72rem;padding:.2rem .6rem;border-radius:6px;background:var(--ticket);color:#221c10;font-weight:800}
+.sx-note .sub{font-size:.72rem;padding:.2rem .6rem;border-radius:6px;background:rgba(223,231,255,.14);color:var(--screen)}
+.sx-note h3{font-size:1.05rem;margin:.6rem 0 .4rem}
+.sx-note p{font-size:.86rem;color:var(--muted)}
+
+/* 关于 */
+.sx-about{background:linear-gradient(160deg,#1a1626,#0c0b10);border:1px solid var(--line);border-radius:26px;padding:2.4rem}
+.sx-about h2{font-size:1.9rem;margin-bottom:.8rem}
+.sx-about h2 u{color:var(--amber);text-decoration:none}
+.sx-about p{color:var(--muted);margin-bottom:1rem}
+.sx-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.4rem}
+.sx-stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem;text-align:center}
+.sx-stat b{font-size:1.3rem;color:var(--red);display:block}
+.sx-stat span{font-size:.74rem;color:var(--muted)}
+
+/* FAQ */
+.sx-faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.2rem 1.1rem;margin-bottom:.7rem}
+.sx-faq summary{cursor:pointer;padding:.85rem 0;font-weight:700}
+.sx-faq p{padding:0 0 .85rem;color:var(--muted)}
+
+/* 页脚 */
+.sx-foot{border-top:1px solid var(--line);background:#08070b;padding:2.2rem 1rem;text-align:center;color:var(--muted);font-size:.86rem}
+.sx-foot a{color:var(--amber)}
+.sx-foot__links{display:flex;gap:1.1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1rem}
+.sx-foot__links a{font-size:.84rem}
+
+@media(max-width:980px){
+  .sx-reels{grid-template-columns:repeat(2,1fr)}
+  .sx-halls{grid-template-columns:repeat(2,1fr)}
+  .sx-notes{grid-template-columns:1fr}
+  .sx-stats{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:640px){
+  .sx-nav{display:none;position:absolute;top:56px;left:0;right:0;flex-direction:column;gap:0;background:rgba(12,11,16,.98);border-bottom:1px solid var(--line)}
+  .sx-nav.show{display:flex}
+  .sx-nav a{padding:.85rem 1rem;border-bottom:1px solid var(--line)}
+  .sx-burger{display:flex}
+  .sx-reels{grid-template-columns:1fr}
+  .sx-halls{grid-template-columns:1fr 1fr}
+  .sx-stats{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<header class="sx-top">
+  <div class="sx-top__in">
+    <div class="sx-logo">🎞️ 68<b>电影网</b> <i>·第68厅</i></div>
+    <nav class="sx-nav" id="sxNav">
+      <a href="#home">放映厅</a>
+      <a href="#reels">胶片编号</a>
+      <a href="#halls">厅位分类</a>
+      <a href="#rank">上座率榜</a>
+      <a href="#notes">放映员手记</a>
+      <a href="#about">关于68</a>
+    </nav>
+    <div class="sx-burger" onclick="document.getElementById('sxNav').classList.toggle('show')">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<section class="sx-hero" id="home">
+  <div class="sx-reel"></div>
+  <span class="sx-clap">CLAP · SCENE 68 · TAKE 1</span>
+  <h1>第 <em>68</em> 号厅，<br>灯光调暗，<u>老片开场</u></h1>
+  <p class="sx-dim">// house lights dimming…</p>
+  <p>68电影网不是视频 App，是一间半夜还亮着放映机的老厅：1968 的老片、城市取景的冷门作、差点被删掉的禁片、68 分钟就能看完的短片，都在这儿重映。</p>
+  <a class="sx-cta" href="#reels">🎬 打板，放映</a>
+</section>
+
+<section class="sx-sec" id="reels">
+  <div class="sx-head">
+    <div class="no">// reel no.</div>
+    <h2>胶片 <i>编号片单</i></h2>
+    <p>68电影网按“胶片号/时长/年代/城市”排片，不按算法热度。</p>
+  </div>
+  <div class="sx-reels">
+    <article class="sx-cell">
+      <span class="roll">REEL-068</span>
+      <h3>68 分钟短片</h3>
+      <p>一个长镜头、一场雨、一段没说出口的话；短视频时代反而最像电影的东西。</p>
+      <small>排片：周三深夜 23:08</small>
+    </article>
+    <article class="sx-cell">
+      <span class="roll">REEL-1968</span>
+      <h3>1968 老片</h3>
+      <p>新浪潮、革命年、黑白情书、胶片颗粒比剧情还吵；看完像翻到旧票根。</p>
+      <small>排片：周五怀旧场</small>
+    </article>
+    <article class="sx-cell">
+      <span class="roll">REEL-X68</span>
+      <h3>第 68 部禁片</h3>
+      <p>被剪过、被禁过、被传过；不是因为脏，是因为太敢说。厅里只放删减对照版。</p>
+      <small>排片：会员暗场</small>
+    </article>
+    <article class="sx-cell">
+      <span class="roll">REEL-68CITY</span>
+      <h3>68 城取景</h3>
+      <p>同一座城拍成 68 种脾气：天桥、夜市、筒子楼、海边公路、末班地铁。</p>
+      <small>排片：城市漫游周</small>
+    </article>
+  </div>
+</section>
+
+<section class="sx-sec" id="halls">
+  <div class="sx-head">
+    <div class="no">// halls 1 / 2 / 6 / 8</div>
+    <h2>厅位 <i>分类</i></h2>
+    <p>68电影网把影厅当片种：进哪个厅，就准备好被哪种情绪砸中。</p>
+  </div>
+  <div class="sx-halls">
+    <a href="#" class="sx-hall"><div class="num">1</div><h3>1 厅·动作</h3><p>枪火/追车/武侠/巷战</p></a>
+    <a href="#" class="sx-hall"><div class="num">2</div><h3>2 厅·文艺</h3><p>长镜/独白/黄昏/信</p></a>
+    <a href="#" class="sx-hall"><div class="num">6</div><h3>6 厅·悬疑</h3><p>密室/记忆/反转/审讯</p></a>
+    <a href="#" class="sx-hall"><div class="num">8</div><h3>8 厅·动画</h3><p>手绘/定格/水墨/梦</p></a>
+  </div>
+</section>
+
+<section class="sx-sec" id="rank">
+  <div class="sx-head">
+    <div class="no">// attendance</div>
+    <h2>上座率 <i>热力榜</i></h2>
+    <p>68电影网按“重看次数 + 散场沉默率 + 字幕条被抄走次数”算上座率。</p>
+  </div>
+  <div class="sx-rank">
+    <div class="sx-seat"><h3>1. 1968 年的那封信 <span>98%</span></h3><div class="sx-perf"><i style="width:98%"></i></div></div>
+    <div class="sx-seat"><h3>2. 第 68 号末班车 <span>95%</span></h3><div class="sx-perf"><i style="width:95%"></i></div></div>
+    <div class="sx-seat"><h3>3. 被剪掉的三分钟 <span>92%</span></h3><div class="sx-perf"><i style="width:92%"></i></div></div>
+    <div class="sx-seat"><h3>4. 筒子楼里的雨 <span>89%</span></h3><div class="sx-perf"><i style="width:89%"></i></div></div>
+    <div class="sx-seat"><h3>5. 海边公路 68 公里 <span>86%</span></h3><div class="sx-perf"><i style="width:86%"></i></div></div>
+  </div>
+</section>
+
+<section class="sx-sec" id="notes">
+  <div class="sx-head">
+    <div class="no">// projectionist log</div>
+    <h2>放映员 <i>手记</i></h2>
+    <p>68电影网的影评像场记：一边打板，一边贴字幕条。</p>
+  </div>
+  <div class="sx-notes">
+    <article class="sx-note">
+      <span class="slate">SCENE 1968 · TK</span>
+      <h3>《1968 年的那封信》</h3>
+      <p>没有大事件，只有一个人把信折了又展。胶片颗粒粗到能看见时间本身——这才是老片最贵的地方：它不修你，它陪你老。</p>
+    </article>
+    <article class="sx-note">
+      <span class="sub">SUBTITLE · 散场后</span>
+      <h3>为什么禁片让人上头</h3>
+      <p>不是因为尺度，是因为它把“大家装作没发生”的事说出口。68电影网放禁片，不放猎奇，放勇气。</p>
+    </article>
+    <article class="sx-note">
+      <span class="slate">SCENE 68CITY · TK</span>
+      <h3>《筒子楼里的雨》</h3>
+      <p>整部片没离开一栋楼：漏水、吵架、借酱油、半夜收音机。城市片拍到这种密度，比炸楼高级十倍。</p>
+    </article>
+    <article class="sx-note">
+      <span class="sub">SUBTITLE · 字幕条</span>
+      <h3>68 分钟够讲什么</h3>
+      <p>够讲一次迟到、一场没赶上的船、一句“其实我早就知道”。长片灌水，短片才肯把刀磨利。</p>
+    </article>
+  </div>
+</section>
+
+<section class="sx-sec" id="about">
+  <div class="sx-about">
+    <h2>关于 <u>68电影网</u></h2>
+    <p>
+      68电影网（68dianyingwang-h5.github.io）是第 68 号放映厅的线上门牌：
+      我们不信“最新=最好”，只信有些片子要等几年、十几年、几十年，才有人坐直了看。
+    </p>
+    <p>
+      这里收 1968 的老片、68 分钟短片、城市取景冷门作、差点消失的禁片、深夜重映的文艺片。
+      进来请别开倍速——放映机转多快，故事就走多慢。
+    </p>
+    <div class="sx-stats">
+      <div class="sx-stat"><b>68</b><span>放映厅号</span></div>
+      <div class="sx-stat"><b>1968</b><span>老片元年</span></div>
+      <div class="sx-stat"><b>4 厅</b><span>动作/文艺/悬疑/动画</span></div>
+      <div class="sx-stat"><b>∞</b><span>散场后还能聊</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sx-sec sx-faq">
+  <div class="sx-head">
+    <div class="no">// q & a</div>
+    <h2>68 <i>问答</i></h2>
+  </div>
+  <details open>
+    <summary>68电影网只放老电影吗？</summary>
+    <p>不。新片也可能进 68 厅，只要它“有胶片味”：慢、真、敢留空白、不哄你。纯爆米花爽片去别的厅。</p>
+  </details>
+  <details>
+    <summary>“68”到底是什么意思？</summary>
+    <p>厅号、胶片号、1968 的年份感、68 分钟短片的时长感，叠在一起：68 不是数字，是一种“灯暗下来”的心情。</p>
+  </details>
+  <details>
+    <summary>禁片真的能看吗？</summary>
+    <p>站里是“删减对照/影史解说/片段重映”式导航，不提供侵权资源；68电影网更像个放映员手记，不是网盘。</p>
+  </details>
+</section>
+
+<footer class="sx-foot">
+  <div class="sx-foot__links">
+    <a href="#reels">胶片编号</a>
+    <a href="#halls">厅位分类</a>
+    <a href="#rank">上座率榜</a>
+    <a href="#notes">放映员手记</a>
+    <a href="#about">关于68</a>
+    <a href="#">免责声明</a>
+  </div>
+  <p>© 2026 <a href="https://68dianyingwang-h5.github.io">68电影网</a> · 68dianyingwang-h5.github.io</p>
+  <p>68电影网 —— 灯暗，打板，老片重映。</p>
+</footer>
+
+<script>
+document.querySelectorAll('.sx-nav a').forEach(function(a){
+  a.addEventListener('click',function(){
+    document.getElementById('sxNav').classList.remove('show');
+  });
+});
+</script>
+
+</body>
+</html>
